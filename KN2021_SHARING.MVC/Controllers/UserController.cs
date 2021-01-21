@@ -16,6 +16,11 @@ namespace KN2021_SHARING.MVC.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Index(mUser data)
+        {
+            return View();
+        }
 
         public ActionResult CreateJavascript()
         {
