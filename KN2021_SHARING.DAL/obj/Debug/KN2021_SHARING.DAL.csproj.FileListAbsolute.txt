@@ -1,0 +1,12 @@
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.DAL\bin\Debug\KN2021_SHARING.DAL.dll.config
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.DAL\bin\Debug\KN2021_SHARING.DAL.dll
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.DAL\bin\Debug\KN2021_SHARING.DAL.pdb
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.DAL\bin\Debug\EntityFramework.dll
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.DAL\bin\Debug\KN2021_SHARING.Common.dll
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.DAL\bin\Debug\KN2021_SHARING.Common.pdb
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.DAL\bin\Debug\EntityFramework.xml
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.DAL\obj\Debug\KN2021_SHARING.DAL.csprojResolveAssemblyReference.cache
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.DAL\obj\Debug\KN2021_SHARING.DAL.dll
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.DAL\obj\Debug\KN2021_SHARING.DAL.pdb

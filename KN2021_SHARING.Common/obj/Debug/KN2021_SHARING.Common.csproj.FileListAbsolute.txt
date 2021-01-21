@@ -1,0 +1,5 @@
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.Common\bin\Debug\KN2021_SHARING.Common.dll
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.Common\bin\Debug\KN2021_SHARING.Common.pdb
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.Common\obj\Debug\KN2021_SHARING.Common.csprojResolveAssemblyReference.cache
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.Common\obj\Debug\KN2021_SHARING.Common.dll
+D:\KALBE DOCUMENTS\Sharing Session\Sharing Basic Web\KN2021_SHARING\KN2021_SHARING.Common\obj\Debug\KN2021_SHARING.Common.pdb

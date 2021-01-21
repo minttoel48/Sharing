@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GVNMESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="mCategory">
+    <Key>
+      <PropertyRef Name="intCategoryId" />
+    </Key>
+    <Property Name="intCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="txtCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dtCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="txtCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dtUpdated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="txtUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="mItems" Relationship="Self.FK_mItem_mCategory" FromRole="mCategory" ToRole="mItem" />
+  </EntityType>
+  <EntityType Name="mItem">
+    <Key>
+      <PropertyRef Name="intItemId" />
+    </Key>
+    <Property Name="intItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="intCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="txtItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="txtItemDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="intHarga" Type="Int32" Nullable="false" />
+    <Property Name="dtCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="txtCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dtUpdated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="txtUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="mCategory" Relationship="Self.FK_mItem_mCategory" FromRole="mItem" ToRole="mCategory" />
+  </EntityType>
+  <EntityType Name="mUser">
+    <Key>
+      <PropertyRef Name="intUserId" />
+    </Key>
+    <Property Name="intUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="txtUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="txtPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="txtFullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="txtEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dtCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="txtCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dtUpdated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="txtUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_mItem_mCategory">
+    <End Role="mCategory" Type="Self.mCategory" Multiplicity="1" />
+    <End Role="mItem" Type="Self.mItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mCategory">
+        <PropertyRef Name="intCategoryId" />
+      </Principal>
+      <Dependent Role="mItem">
+        <PropertyRef Name="intCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GVNMESEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="mCategories" EntityType="Self.mCategory" />
+    <EntitySet Name="mItems" EntityType="Self.mItem" />
+    <EntitySet Name="mUsers" EntityType="Self.mUser" />
+    <AssociationSet Name="FK_mItem_mCategory" Association="Self.FK_mItem_mCategory">
+      <End Role="mCategory" EntitySet="mCategories" />
+      <End Role="mItem" EntitySet="mItems" />
+    </AssociationSet>
+    <EntitySet Name="tCartDetails" EntityType="GVNMESModel.tCartDetail" />
+    <EntitySet Name="tCartHeaders" EntityType="GVNMESModel.tCartHeader" />
+    <AssociationSet Name="FK_tCartDetail_tCartHeader" Association="GVNMESModel.FK_tCartDetail_tCartHeader">
+      <End Role="tCartHeader" EntitySet="tCartHeaders" />
+      <End Role="tCartDetail" EntitySet="tCartDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tCartDetail">
+    <Key>
+      <PropertyRef Name="intCartDetailId" />
+    </Key>
+    <Property Name="intCartDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="intCartHeaderId" Type="Int32" Nullable="false" />
+    <Property Name="intItemId" Type="Int32" Nullable="false" />
+    <Property Name="intQty" Type="Int32" Nullable="false" />
+    <Property Name="dtCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="txtCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dtUpdated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="txtUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tCartHeader" Relationship="GVNMESModel.FK_tCartDetail_tCartHeader" FromRole="tCartDetail" ToRole="tCartHeader" />
+  </EntityType>
+  <EntityType Name="tCartHeader">
+    <Key>
+      <PropertyRef Name="intCartHeaderId" />
+    </Key>
+    <Property Name="intCartHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="intUserId" Type="Int32" Nullable="false" />
+    <Property Name="txtCartNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dtCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="txtCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dtUpdated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="txtUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tCartDetails" Relationship="GVNMESModel.FK_tCartDetail_tCartHeader" FromRole="tCartHeader" ToRole="tCartDetail" />
+  </EntityType>
+  <Association Name="FK_tCartDetail_tCartHeader">
+    <End Type="GVNMESModel.tCartHeader" Role="tCartHeader" Multiplicity="1" />
+    <End Type="GVNMESModel.tCartDetail" Role="tCartDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tCartHeader">
+        <PropertyRef Name="intCartHeaderId" />
+      </Principal>
+      <Dependent Role="tCartDetail">
+        <PropertyRef Name="intCartHeaderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

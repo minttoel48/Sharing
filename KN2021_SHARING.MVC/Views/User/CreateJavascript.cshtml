@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "CreateJavascript";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Javascript</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>mUser</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+           <label class="control-label col-md-2">Int User Id</label>
+            <div class="col-md-10">
+                <input type="number" id="intUserId" name="intUserId" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Username</label>
+            <div class="col-md-10">
+                <input type="text" id="txtUsername" name="txtUsername" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Password</label>
+            <div class="col-md-10">
+                <input type="password" id="txtPassword" name="txtPassword" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Full Name</label>
+            <div class="col-md-10">
+                <input type="text" id="txtFullname" name="txtFullname" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Email</label>
+            <div class="col-md-10">
+                <input type="email" id="txtEmail" name="txtEmail" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" onclick="return SaveData();" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" onclick="return GetData(2);" value="Get Data User" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+
+    function SaveData() {
+        var userid = $('#intUserId').val();
+        var username = $('#txtUsername').val();
+        var password = $('#txtPassword').val();
+        var fullname = $('#txtFullname').val();
+        var mail = $('#txtEmail').val();
+        $.ajax({
+            type: 'POST',
+            data: { txtUsername: username, txtPassword: password, txtFullname: fullname, txtEmail: mail },
+            url: '../User/CreateJavascript',
+            success: function (result) {
+                debugger;
+                var dtJson = JSON.stringify(result);
+                alert("Success");
+            },
+            error: function () {
+                alert("Error");
+            }
+        })
+    }
+
+    function GetData(userId) {
+        $.ajax({
+            type: 'POST',
+            data: { id: userId },
+            url: '../User/GetDataUser',
+            success: function (result) {
+                debugger;
+                var dtJson = JSON.stringify(result);
+                alert("Success");
+            },
+            error: function () {
+                alert("Error");
+            }
+        })
+    }
+</script>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GVNMESModelStoreContainer" CdmEntityContainer="GVNMESEntities">
+    <EntitySetMapping Name="mCategories">
+      <EntityTypeMapping TypeName="GVNMESModel.mCategory">
+        <MappingFragment StoreEntitySet="mCategory">
+          <ScalarProperty Name="intCategoryId" ColumnName="intCategoryId" />
+          <ScalarProperty Name="txtCategoryName" ColumnName="txtCategoryName" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+          <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+          <ScalarProperty Name="dtUpdated" ColumnName="dtUpdated" />
+          <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mItems">
+      <EntityTypeMapping TypeName="GVNMESModel.mItem">
+        <MappingFragment StoreEntitySet="mItem">
+          <ScalarProperty Name="intItemId" ColumnName="intItemId" />
+          <ScalarProperty Name="intCategoryId" ColumnName="intCategoryId" />
+          <ScalarProperty Name="txtItemName" ColumnName="txtItemName" />
+          <ScalarProperty Name="txtItemDescription" ColumnName="txtItemDescription" />
+          <ScalarProperty Name="intHarga" ColumnName="intHarga" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+          <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+          <ScalarProperty Name="dtUpdated" ColumnName="dtUpdated" />
+          <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mUsers">
+      <EntityTypeMapping TypeName="GVNMESModel.mUser">
+        <MappingFragment StoreEntitySet="mUser">
+          <ScalarProperty Name="intUserId" ColumnName="intUserId" />
+          <ScalarProperty Name="txtUsername" ColumnName="txtUsername" />
+          <ScalarProperty Name="txtPassword" ColumnName="txtPassword" />
+          <ScalarProperty Name="txtFullname" ColumnName="txtFullname" />
+          <ScalarProperty Name="txtEmail" ColumnName="txtEmail" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+          <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+          <ScalarProperty Name="dtUpdated" ColumnName="dtUpdated" />
+          <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tCartDetails">
+      <EntityTypeMapping TypeName="GVNMESModel.tCartDetail">
+        <MappingFragment StoreEntitySet="tCartDetail">
+          <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+          <ScalarProperty Name="dtUpdated" ColumnName="dtUpdated" />
+          <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+          <ScalarProperty Name="intQty" ColumnName="intQty" />
+          <ScalarProperty Name="intItemId" ColumnName="intItemId" />
+          <ScalarProperty Name="intCartHeaderId" ColumnName="intCartHeaderId" />
+          <ScalarProperty Name="intCartDetailId" ColumnName="intCartDetailId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tCartHeaders">
+      <EntityTypeMapping TypeName="GVNMESModel.tCartHeader">
+        <MappingFragment StoreEntitySet="tCartHeader">
+          <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+          <ScalarProperty Name="dtUpdated" ColumnName="dtUpdated" />
+          <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+          <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+          <ScalarProperty Name="txtCartNumber" ColumnName="txtCartNumber" />
+          <ScalarProperty Name="intUserId" ColumnName="intUserId" />
+          <ScalarProperty Name="intCartHeaderId" ColumnName="intCartHeaderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

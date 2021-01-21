@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GVNMESModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="mCategory">
+          <Key>
+            <PropertyRef Name="intCategoryId" />
+          </Key>
+          <Property Name="intCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="txtCategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="dtCreated" Type="datetime" Nullable="false" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="dtUpdated" Type="datetime" Nullable="false" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="mItem">
+          <Key>
+            <PropertyRef Name="intItemId" />
+          </Key>
+          <Property Name="intItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intCategoryId" Type="int" Nullable="false" />
+          <Property Name="txtItemName" Type="varchar" MaxLength="50" />
+          <Property Name="txtItemDescription" Type="varchar" MaxLength="50" />
+          <Property Name="intHarga" Type="int" Nullable="false" />
+          <Property Name="dtCreated" Type="datetime" Nullable="false" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="dtUpdated" Type="datetime" Nullable="false" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="mUser">
+          <Key>
+            <PropertyRef Name="intUserId" />
+          </Key>
+          <Property Name="intUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="txtUsername" Type="varchar" MaxLength="50" />
+          <Property Name="txtPassword" Type="varchar" MaxLength="50" />
+          <Property Name="txtFullname" Type="varchar" MaxLength="50" />
+          <Property Name="txtEmail" Type="varchar" MaxLength="50" />
+          <Property Name="dtCreated" Type="datetime" Nullable="false" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="dtUpdated" Type="datetime" Nullable="false" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tCartDetail">
+          <Key>
+            <PropertyRef Name="intCartDetailId" />
+          </Key>
+          <Property Name="intCartDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intCartHeaderId" Type="int" Nullable="false" />
+          <Property Name="intItemId" Type="int" Nullable="false" />
+          <Property Name="intQty" Type="int" Nullable="false" />
+          <Property Name="dtCreated" Type="datetime" Nullable="false" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="dtUpdated" Type="datetime" Nullable="false" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tCartHeader">
+          <Key>
+            <PropertyRef Name="intCartHeaderId" />
+          </Key>
+          <Property Name="intCartHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intUserId" Type="int" Nullable="false" />
+          <Property Name="txtCartNumber" Type="varchar" MaxLength="50" />
+          <Property Name="dtCreated" Type="datetime" Nullable="false" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="dtUpdated" Type="datetime" Nullable="false" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_mItem_mCategory">
+          <End Role="mCategory" Type="Self.mCategory" Multiplicity="1" />
+          <End Role="mItem" Type="Self.mItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mCategory">
+              <PropertyRef Name="intCategoryId" />
+            </Principal>
+            <Dependent Role="mItem">
+              <PropertyRef Name="intCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tCartDetail_tCartHeader">
+          <End Role="tCartHeader" Type="Self.tCartHeader" Multiplicity="1" />
+          <End Role="tCartDetail" Type="Self.tCartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCartHeader">
+              <PropertyRef Name="intCartHeaderId" />
+            </Principal>
+            <Dependent Role="tCartDetail">
+              <PropertyRef Name="intCartHeaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GVNMESModelStoreContainer">
+          <EntitySet Name="mCategory" EntityType="Self.mCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mItem" EntityType="Self.mItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mUser" EntityType="Self.mUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tCartDetail" EntityType="Self.tCartDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tCartHeader" EntityType="Self.tCartHeader" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_mItem_mCategory" Association="Self.FK_mItem_mCategory">
+            <End Role="mCategory" EntitySet="mCategory" />
+            <End Role="mItem" EntitySet="mItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tCartDetail_tCartHeader" Association="Self.FK_tCartDetail_tCartHeader">
+            <End Role="tCartHeader" EntitySet="tCartHeader" />
+            <End Role="tCartDetail" EntitySet="tCartDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GVNMESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="mCategory">
+          <Key>
+            <PropertyRef Name="intCategoryId" />
+          </Key>
+          <Property Name="intCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="txtCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="mItems" Relationship="Self.FK_mItem_mCategory" FromRole="mCategory" ToRole="mItem" />
+        </EntityType>
+        <EntityType Name="mItem">
+          <Key>
+            <PropertyRef Name="intItemId" />
+          </Key>
+          <Property Name="intItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="txtItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtItemDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="intHarga" Type="Int32" Nullable="false" />
+          <Property Name="dtCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="mCategory" Relationship="Self.FK_mItem_mCategory" FromRole="mItem" ToRole="mCategory" />
+        </EntityType>
+        <EntityType Name="mUser">
+          <Key>
+            <PropertyRef Name="intUserId" />
+          </Key>
+          <Property Name="intUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="txtUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtFullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_mItem_mCategory">
+          <End Role="mCategory" Type="Self.mCategory" Multiplicity="1" />
+          <End Role="mItem" Type="Self.mItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mCategory">
+              <PropertyRef Name="intCategoryId" />
+            </Principal>
+            <Dependent Role="mItem">
+              <PropertyRef Name="intCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GVNMESEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="mCategories" EntityType="Self.mCategory" />
+          <EntitySet Name="mItems" EntityType="Self.mItem" />
+          <EntitySet Name="mUsers" EntityType="Self.mUser" />
+          <AssociationSet Name="FK_mItem_mCategory" Association="Self.FK_mItem_mCategory">
+            <End Role="mCategory" EntitySet="mCategories" />
+            <End Role="mItem" EntitySet="mItems" />
+          </AssociationSet>
+          <EntitySet Name="tCartDetails" EntityType="GVNMESModel.tCartDetail" />
+          <EntitySet Name="tCartHeaders" EntityType="GVNMESModel.tCartHeader" />
+          <AssociationSet Name="FK_tCartDetail_tCartHeader" Association="GVNMESModel.FK_tCartDetail_tCartHeader">
+            <End Role="tCartHeader" EntitySet="tCartHeaders" />
+            <End Role="tCartDetail" EntitySet="tCartDetails" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="tCartDetail">
+          <Key>
+            <PropertyRef Name="intCartDetailId" />
+          </Key>
+          <Property Name="intCartDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intCartHeaderId" Type="Int32" Nullable="false" />
+          <Property Name="intItemId" Type="Int32" Nullable="false" />
+          <Property Name="intQty" Type="Int32" Nullable="false" />
+          <Property Name="dtCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tCartHeader" Relationship="GVNMESModel.FK_tCartDetail_tCartHeader" FromRole="tCartDetail" ToRole="tCartHeader" />
+        </EntityType>
+        <EntityType Name="tCartHeader">
+          <Key>
+            <PropertyRef Name="intCartHeaderId" />
+          </Key>
+          <Property Name="intCartHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intUserId" Type="Int32" Nullable="false" />
+          <Property Name="txtCartNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tCartDetails" Relationship="GVNMESModel.FK_tCartDetail_tCartHeader" FromRole="tCartHeader" ToRole="tCartDetail" />
+        </EntityType>
+        <Association Name="FK_tCartDetail_tCartHeader">
+          <End Type="GVNMESModel.tCartHeader" Role="tCartHeader" Multiplicity="1" />
+          <End Type="GVNMESModel.tCartDetail" Role="tCartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCartHeader">
+              <PropertyRef Name="intCartHeaderId" />
+            </Principal>
+            <Dependent Role="tCartDetail">
+              <PropertyRef Name="intCartHeaderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GVNMESModelStoreContainer" CdmEntityContainer="GVNMESEntities">
+          <EntitySetMapping Name="mCategories">
+            <EntityTypeMapping TypeName="GVNMESModel.mCategory">
+              <MappingFragment StoreEntitySet="mCategory">
+                <ScalarProperty Name="intCategoryId" ColumnName="intCategoryId" />
+                <ScalarProperty Name="txtCategoryName" ColumnName="txtCategoryName" />
+                <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="dtUpdated" ColumnName="dtUpdated" />
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mItems">
+            <EntityTypeMapping TypeName="GVNMESModel.mItem">
+              <MappingFragment StoreEntitySet="mItem">
+                <ScalarProperty Name="intItemId" ColumnName="intItemId" />
+                <ScalarProperty Name="intCategoryId" ColumnName="intCategoryId" />
+                <ScalarProperty Name="txtItemName" ColumnName="txtItemName" />
+                <ScalarProperty Name="txtItemDescription" ColumnName="txtItemDescription" />
+                <ScalarProperty Name="intHarga" ColumnName="intHarga" />
+                <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="dtUpdated" ColumnName="dtUpdated" />
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mUsers">
+            <EntityTypeMapping TypeName="GVNMESModel.mUser">
+              <MappingFragment StoreEntitySet="mUser">
+                <ScalarProperty Name="intUserId" ColumnName="intUserId" />
+                <ScalarProperty Name="txtUsername" ColumnName="txtUsername" />
+                <ScalarProperty Name="txtPassword" ColumnName="txtPassword" />
+                <ScalarProperty Name="txtFullname" ColumnName="txtFullname" />
+                <ScalarProperty Name="txtEmail" ColumnName="txtEmail" />
+                <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="dtUpdated" ColumnName="dtUpdated" />
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tCartDetails">
+            <EntityTypeMapping TypeName="GVNMESModel.tCartDetail">
+              <MappingFragment StoreEntitySet="tCartDetail">
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+                <ScalarProperty Name="dtUpdated" ColumnName="dtUpdated" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+                <ScalarProperty Name="intQty" ColumnName="intQty" />
+                <ScalarProperty Name="intItemId" ColumnName="intItemId" />
+                <ScalarProperty Name="intCartHeaderId" ColumnName="intCartHeaderId" />
+                <ScalarProperty Name="intCartDetailId" ColumnName="intCartDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tCartHeaders">
+            <EntityTypeMapping TypeName="GVNMESModel.tCartHeader">
+              <MappingFragment StoreEntitySet="tCartHeader">
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+                <ScalarProperty Name="dtUpdated" ColumnName="dtUpdated" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="dtCreated" ColumnName="dtCreated" />
+                <ScalarProperty Name="txtCartNumber" ColumnName="txtCartNumber" />
+                <ScalarProperty Name="intUserId" ColumnName="intUserId" />
+                <ScalarProperty Name="intCartHeaderId" ColumnName="intCartHeaderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
